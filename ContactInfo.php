@@ -14,7 +14,6 @@ class ContactInfo
     protected $phoneNumber;
     protected $email;
 
-
     /**
      * Parameterized constructor function
      */

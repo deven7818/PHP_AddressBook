@@ -3,11 +3,12 @@
 include "ContactInfo.php";
 
 /**
- * Uc-3
+ * Uc-4
  * 1.Create contact in address book with following details
  * - first name, last name, address, city, state, zip, phone number and email.
  * 2.Create new contact in address book
  * 3.Edit existing contact person using their name
+ * 4.Delete Person from address book using first Name
  */
 
 class AddressBook
@@ -42,12 +43,13 @@ class AddressBook
         array_push($this->contactArray, $this->person);
     }
 
-    function editContact(){
-        $editName = readline("Enter First Name of Person to edit : ");
+    function editContact()
+    {
+        $editName = readline("\nEnter First Name of Person to edit : ");
         for ($i = 0; $i < count($this->contactArray); $i++) {
             $name = $this->contactArray[$i];
-            echo "First Name ". $name->getFirstName() . "\n";
-            if($editName == $name->getFirstName()){
+            echo "First Name " . $name->getFirstName() . "\n";
+            if ($editName == $name->getFirstName()) {
                 $this->firstName = readline("Edit your first name : ");
                 $this->lastName = readline("Edit your last name : ");
                 $this->address = readline("Edit your address : ");
@@ -68,9 +70,25 @@ class AddressBook
 
                 $this->contactArray[$i] = $name;
                 $this->showContactDetails();
-                break; 
-            }else{
+                break;
+            } else {
                 echo "The Name does not exist.";
+            }
+        }
+    }
+
+    /**
+     * Function to delete contact by first Name
+     */
+    function deleteContact()
+    {
+        echo "\n";
+        $deletePerson = readline("\nEnter the first name of person to delete person : ");
+        for ($i = 0; $i < count($this->contactArray); $i++) {
+            $name = $this->contactArray[$i];
+            if ($deletePerson ==  $name->getFirstName()) {
+                unset($this->contactArray[$i]);
+                $this->showContactDetails();
             }
         }
     }
@@ -80,18 +98,17 @@ class AddressBook
      */
     function showContactDetails()
     {
-        for($i = 0; $i < count($this->contactArray); $i++){
+        for ($i = 0; $i < count($this->contactArray); $i++) {
             echo "Contact information is : ";
-            echo "\nFirst Name : ".$this->person->getFirstName()
-            ."\Last Name : ".$this->person->getLastName()
-            ."\nAddress : ".$this->person->getAddress()
-            ."\nCity : ".$this->person->getCity()
-            ."\nState : ".$this->person->getState()
-            ."\nZip Code : ".$this->person->getZip()
-            ."\nPhone Number : ".$this->person->getPhoneNumber()
-            ."\nEmail Id : ".$this->person->getEmail();
-
-    }
+            echo "\nFirst Name : " . $this->person->getFirstName()
+                . "\Last Name : " . $this->person->getLastName()
+                . "\nAddress : " . $this->person->getAddress()
+                . "\nCity : " . $this->person->getCity()
+                . "\nState : " . $this->person->getState()
+                . "\nZip Code : " . $this->person->getZip()
+                . "\nPhone Number : " . $this->person->getPhoneNumber()
+                . "\nEmail Id : " . $this->person->getEmail();
+        }
     }
 }
 //calling functions
@@ -100,4 +117,5 @@ $addressBook->welcome();
 $addressBook->addNewContactDetails();
 $addressBook->showContactDetails();
 $addressBook->editContact();
+$addressBook->deleteContact();
 ?>
