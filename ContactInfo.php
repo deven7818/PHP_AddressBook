@@ -30,9 +30,17 @@ class ContactInfo
         $this->email = $email;
     }
 
+    /**
+     * Getter setter functions  
+     */
     public function getFirstName()
     {
         return $this->firstName;
+    }
+
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
     }
 
     public function getLastName()
@@ -40,9 +48,19 @@ class ContactInfo
         return $this->lastName;
     }
 
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+    }
+
     public function getAddress()
     {
         return $this->address;
+    }
+
+    public function setAddress($address)
+    {
+        $this->address = $address;
     }
 
     public function getCity()
@@ -50,9 +68,19 @@ class ContactInfo
         return $this->city;
     }
 
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
     public function getState()
     {
         return $this->state;
+    }
+
+    public function setState($state)
+    {
+        $this->state = $state;
     }
 
     public function getZip()
@@ -60,15 +88,32 @@ class ContactInfo
         return $this->zip;
     }
 
+    public function setZip($zip)
+    {
+        $this->zip = $zip;
+    }
+
     public function getPhoneNumber()
     {
         return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
     }
 
     public function getEmail()
     {
         return $this->email;
     }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+
 
     //function toString
     public function __toString()

@@ -3,10 +3,11 @@
 include "ContactInfo.php";
 
 /**
- * Uc-2
+ * Uc-3
  * 1.Create contact in address book with following details
  * - first name, last name, address, city, state, zip, phone number and email.
  * 2.Create new contact in address book
+ * 3.Edit existing contact person using their name
  */
 
 class AddressBook
@@ -41,23 +42,56 @@ class AddressBook
         array_push($this->contactArray, $this->person);
     }
 
+    function editContact(){
+        $editName = readline("Enter First Name of Person to edit : ");
+        for ($i = 0; $i < count($this->contactArray); $i++) {
+            $name = $this->contactArray[$i];
+            echo "First Name ". $name->getFirstName() . "\n";
+            if($editName == $name->getFirstName()){
+                $this->firstName = readline("Edit your first name : ");
+                $this->lastName = readline("Edit your last name : ");
+                $this->address = readline("Edit your address : ");
+                $this->city = readline("Edit your city : ");
+                $this->state = readline("Edit your state : ");
+                $this->zip = readline("Edit your zip code : ");
+                $this->phoneNumber = readline("Edit your phone Number : ");
+                $this->email = readline("Edit your email : ");
+
+                $name->setFirstName($this->firstName);
+                $name->setLastName($this->lastName);
+                $name->setAddress($this->address);
+                $name->setCity($this->city);
+                $name->setState($this->state);
+                $name->setZip($this->zip);
+                $name->setPhoneNumber($this->phoneNumber);
+                $name->setEmail($this->email);
+
+                $this->contactArray[$i] = $name;
+                $this->showContactDetails();
+                break; 
+            }else{
+                echo "The Name does not exist.";
+            }
+        }
+    }
+
     /**
      * Function to show contact information given by user
      */
     function showContactDetails()
     {
-
-        for ($i = 0; $i < count($this->contactArray); $i++) {
+        for($i = 0; $i < count($this->contactArray); $i++){
             echo "Contact information is : ";
-            echo "\nFirst Name : " . $this->firstName;
-            echo "\nLast Name : " . $this->lastName;
-            echo "\nAddress : " . $this->address;
-            echo "\nCity : " . $this->city;
-            echo "\nState : " . $this->state;
-            echo "\nZip Code : " . $this->zip;
-            echo "\nPhone Number : " . $this->phoneNumber;
-            echo "\nEmail address : " . $this->email;
-        }
+            echo "\nFirst Name : ".$this->person->getFirstName()
+            ."\Last Name : ".$this->person->getLastName()
+            ."\nAddress : ".$this->person->getAddress()
+            ."\nCity : ".$this->person->getCity()
+            ."\nState : ".$this->person->getState()
+            ."\nZip Code : ".$this->person->getZip()
+            ."\nPhone Number : ".$this->person->getPhoneNumber()
+            ."\nEmail Id : ".$this->person->getEmail();
+
+    }
     }
 }
 //calling functions
@@ -65,4 +99,5 @@ $addressBook = new AddressBook();
 $addressBook->welcome();
 $addressBook->addNewContactDetails();
 $addressBook->showContactDetails();
+$addressBook->editContact();
 ?>
