@@ -1,7 +1,7 @@
 <?php
 
 include "ContactInfo.php";
-
+include "Util.php";
 /**
  * Uc-5
  * 1.Create contact in address book with following details
@@ -28,17 +28,42 @@ class AddressBook
     /**
      * Function to get contact details information from user
      */
+
+     
     function addNewContactDetails()
     {
         //echo "Contact informa"
+        $util = new Util();
         $this->firstName = readline("Enter your first name : ");
+        $util->validateName($this->firstName);
+
+
         $this->lastName = readline("Enter your last name : ");
+        $util->validateName($this->lastName);
+
         $this->address = readline("Enter your address : ");
+        $util->validateAddress($this->address);
+
         $this->city = readline("Enter your city : ");
+        $util->validateLocation($this->city);
+
+
+
         $this->state = readline("Enter your state : ");
+        $util->validateLocation($this->state);
+
+        
         $this->zip = readline("Enter your zip code : ");
+        $util->validateZip($this->zip);
+
+        //^([0-9]{2}[\\s]?){1}[0-9]{9,10}$
+        //+91-9075183900
+
         $this->phoneNumber = readline("Enter your phone Number : ");
+        $util->validatePhoneNumber($this->phoneNumber);
+
         $this->email = readline("Enter your email : ");
+        $util->validateEmail($this->email);
 
         $this->person = new ContactInfo($this->firstName, $this->lastName, $this->address, $this->city, $this->state, $this->zip, $this->phoneNumber, $this->email);
         array_push($this->contactArray, $this->person);
@@ -46,19 +71,19 @@ class AddressBook
 
     function editContact()
     {
-        $editName = readline("\nEnter First Name of Person to edit : ");
+        $editName = readline("Enter First Name of Person to edit : ");
         for ($i = 0; $i < count($this->contactArray); $i++) {
             $name = $this->contactArray[$i];
             echo "\nFirst Name " . $name->getFirstName() . "\n";
             if ($editName == $name->getFirstName()) {
-                $this->firstName = readline("\nEdit your first name : ");
-                $this->lastName = readline("\nEdit your last name : ");
-                $this->address = readline("\nEdit your address : ");
-                $this->city = readline("\nEdit your city : ");
-                $this->state = readline("\nEdit your state : ");
-                $this->zip = readline("\nEdit your zip code : ");
-                $this->phoneNumber = readline("\nEdit your phone Number : ");
-                $this->email = readline("\nEdit your email : ");
+                $this->firstName = readline("Edit your first name : ");
+                $this->lastName = readline("Edit your last name : ");
+                $this->address = readline("Edit your address : ");
+                $this->city = readline("Edit your city : ");
+                $this->state = readline("Edit your state : ");
+                $this->zip = readline("Edit your zip code : ");
+                $this->phoneNumber = readline("Edit your phone Number : ");
+                $this->email = readline("Edit your email : ");
 
                 $name->setFirstName($this->firstName);
                 $name->setLastName($this->lastName);
