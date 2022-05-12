@@ -48,7 +48,27 @@ class MultipleAddressBook
         $number = readline("Enter Number of contacts to add : ");
         if (array_key_exists($addressBookName, $this->addressBookArray)) {
             for ($i = 0; $i < $number; $i++) {
-                $this->addressBookArray[$addressBookName][$i] = $this->addressBook->addNewContactDetails();
+                $firstName = readline("Enter First Name : ");
+                foreach ($this->addressBookArray as $key => $values) {
+                    if ($key == $addressBookName) {
+                        if ($values == null) {
+                            $this->addressBookArray[$addressBookName][$i] = $this->addressBook->addNewContactDetails($firstName);
+                            echo "Contact added successfully.";
+                            break;
+                        }
+                        for ($j = 0; $j < $number; $j++) {
+                            if ($firstName == $values[$j]->getFirstName()) {
+                                echo "The person with given name is already exist.\n";
+                                $i--;
+                                break;
+                            } else {
+                                $this->addressBookArray[$addressBookName][$i] = $this->addressBook->addNewContactDetails($firstName);
+                                echo "Contact added successfully. \n";
+                                break;
+                            }
+                        }
+                    }
+                }
             }
         } else {
             echo $addressBookName . "Address book not found";
@@ -109,12 +129,33 @@ class MultipleAddressBook
                     }
                 }
             }
-        }else {
+        } else {
             echo $addressBookName . "AddressBook doesn't exist, Please enter valid name.";
             $this->deleteContactFromAddressBook();
         }
     }
-     /**
+    
+    /**
+     * Function to search a person by their city
+     */
+    public function searchPersonByCity()
+    {
+        $cityName = readline('Enter the City Name : ');
+        foreach ($this->addressBookArray as $key => $values) {
+            for ($i = 0; $i < count($values); $i++) {
+                if ($cityName == $values[$i]->getCity()) {
+                    echo "Address Book : " . $key . "\n";
+                    echo "First Name : " . $values[$i]->getFirstName() . "\n";
+                    echo "Last Name : " . $values[$i]->getLastName() . "\n";
+                    echo "State :" . $values[$i]->getState() . "\n";
+                    echo "\n";
+                }
+            }
+        }
+    }
+
+
+    /**
      * Function to show all the Contacts from the Address Book
      */
     public function showContactFromAddressBook()

@@ -16,7 +16,8 @@ class AddressBookMain
                   \n3. Edit Contact in a AddressBook 
                   \n4. Delete AddressBook
                   \n5. Delete Contact from AddressBook 
-                  \n6. Show Contacts from AddressBook
+                  \n6. Search Contact by City Name 
+                  \n7. Show Contacts from AddressBook
                   \n0. Exit\n";
 
             $choice = readline('Enter Your Choice : ');
@@ -24,23 +25,34 @@ class AddressBookMain
                 case 1:
                     $multipleAddressBook->addNewAddressBook();
                     break;
+        
                 case 2:
                     $multipleAddressBook->addNewContact();
                     break;
+        
                 case 3:
                     $multipleAddressBook->editContactFromAddressBook();
                     break;
+        
                 case 4:
                     $multipleAddressBook->deleteAddressBook();
+        
                 case 5:
                     $multipleAddressBook->deleteContactFromAddressBook();
                     break;
+            
                 case 6:
+                    $multipleAddressBook->searchPersonByCity();
+                    break;
+
+                case 7:
                     $multipleAddressBook->showContactFromAddressBook();
                     break;
+    
                 case 0:
                     exit("Exit");
                     break;
+    
                 default:
                     echo "\nWrong Choice.";
                     break;

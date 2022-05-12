@@ -11,6 +11,7 @@ include "Util.php";
  * 4.Delete Person from address book using first Name
  * 5.Add Multiple person to address book
  * 6.add multiple Address Book to the System with a unique Name
+ * 7.Search contact by City Name in address book
  */
 
 class AddressBook
@@ -19,14 +20,15 @@ class AddressBook
 
     /**
      * Function to get contact details information from user
+     * Passing firstName as parameter
      * Returns person object
      */
-    function addNewContactDetails()
+    function addNewContactDetails($firstName)
     {
 
         $util = new Util();
-        $this->firstName = readline("Enter your first name : ");
-        $util->validateName($this->firstName);
+        // $this->firstName = readline("Enter your first name : ");
+        // $util->validateName($this->firstName);
 
         $this->lastName = readline("Enter your last name : ");
         $util->validateName($this->lastName);
@@ -50,8 +52,8 @@ class AddressBook
         $this->email = readline("Enter your email : ");
         $util->validateEmail($this->email);
 
-        $this->person = new ContactInfo($this->firstName, $this->lastName, $this->address, $this->city, $this->state, $this->zip, $this->phoneNumber, $this->email);
-    
+        $this->person = new ContactInfo($firstName, $this->lastName, $this->address, $this->city, $this->state, $this->zip, $this->phoneNumber, $this->email);
+
         return $this->person;
     }
 
