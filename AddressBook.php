@@ -18,14 +18,6 @@ class AddressBook
     public $person;
 
     /**
-     * Function for printing Welcome message
-     */
-    // function welcome()
-    // {
-    //     echo "\nWelcome to Address Book Program\n";
-    // }
-
-    /**
      * Function to get contact details information from user
      * Returns person object
      */

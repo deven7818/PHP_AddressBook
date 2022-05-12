@@ -10,8 +10,6 @@ class AddressBookMain
       //  $addressBook = new AddressBook();
         $multipleAddressBook = new MultipleAddressBook();
 
-        //$addressBook->welcome();
-
         while (true) {
             echo "\n1. Add New AddressBook 
                   \n2. Add New Contact to AddressBook

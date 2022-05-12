@@ -112,8 +112,6 @@ class ContactInfo
         $this->email = $email;
     }
 
-
-
     //function toString
     public function __toString()
     {

@@ -32,7 +32,7 @@ class MultipleAddressBook
             $this->addNewAddressBook();
         } else {
             $this->addressBookArray[$addressBookName] = NULL;
-            $newBook = readline("1.To add another Book or press any key to exit.");
+            $newBook = readline("Press 1 To add another Book or press any key to exit.");
             if ($newBook == 1) {
                 $this->addNewAddressBook();
             }
@@ -44,17 +44,20 @@ class MultipleAddressBook
      */
     public function addNewContact()
     {
-        $addressBookName = readline("Enter name of the Address Book to add the contact : ");
-        $number = (int)readline("Enter number of contacts to add : ");
+        $addressBookName = readline("Enter name of the Address Book to add new contact : ");
+        $number = readline("Enter Number of contacts to add : ");
         if (array_key_exists($addressBookName, $this->addressBookArray)) {
             for ($i = 0; $i < $number; $i++) {
-                $this->addressBookArray[$addressBookName][$i] = $this->addressBook->$this->addNewContact();
+                $this->addressBookArray[$addressBookName][$i] = $this->addressBook->addNewContactDetails();
             }
         } else {
             echo $addressBookName . "Address book not found";
         }
     }
 
+    /**
+     * Function to edit Contact from AddressBook using First Name
+     */
     function editContactFromAddressBook()
     {
         $addressBookName = readline("Enter Name of the Address Book to edit Contact : ");
@@ -119,7 +122,7 @@ class MultipleAddressBook
         $addressBookName = readline('Enter Name of the AddressBook: ');
         foreach ($this->addressBookArray as $key => $values) {
             if ($key == $addressBookName) {
-                echo $key . " Address Book";
+                echo $key . " Address Book Contains-";
                 foreach ($values as $contact) {
                     echo $contact . "\n";
                 }
