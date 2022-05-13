@@ -3,7 +3,7 @@
 include "ContactInfo.php";
 include "Util.php";
 /**
- * Uc-5
+ * Uc-8
  * 1.Create contact in address book with following details
  * - first name, last name, address, city, state, zip, phone number and email.
  * 2.Create new contact in address book
@@ -11,7 +11,9 @@ include "Util.php";
  * 4.Delete Person from address book using first Name
  * 5.Add Multiple person to address book
  * 6.add multiple Address Book to the System with a unique Name
- * 7.Search contact by City Name in address book
+ * 7.Search contact by City Name in address book.
+ * 8.Sort contact by First name in address book.
+ * 
  */
 
 class AddressBook
@@ -27,32 +29,30 @@ class AddressBook
     {
 
         $util = new Util();
-        // $this->firstName = readline("Enter your first name : ");
-        // $util->validateName($this->firstName);
 
-        $this->lastName = readline("Enter your last name : ");
+        $lastName = readline("Enter your last name : ");
         $util->validateName($this->lastName);
 
-        $this->address = readline("Enter your address : ");
+        $address = readline("Enter your address : ");
         $util->validateAddress($this->address);
 
-        $this->city = readline("Enter your city : ");
+        $city = readline("Enter your city : ");
         $util->validateLocation($this->city);
 
-        $this->state = readline("Enter your state : ");
+        $state = readline("Enter your state : ");
         $util->validateLocation($this->state);
 
-        $this->zip = readline("Enter your zip code : ");
+        $zip = readline("Enter your zip code : ");
         $util->validateZip($this->zip);
 
         //+91-9075183900
-        $this->phoneNumber = readline("Enter your phone Number : ");
+        $phoneNumber = readline("Enter your phone Number : ");
         $util->validatePhoneNumber($this->phoneNumber);
 
-        $this->email = readline("Enter your email : ");
+        $email = readline("Enter your email : ");
         $util->validateEmail($this->email);
 
-        $this->person = new ContactInfo($firstName, $this->lastName, $this->address, $this->city, $this->state, $this->zip, $this->phoneNumber, $this->email);
+        $this->person = new ContactInfo($firstName, $lastName, $address, $city, $state, $zip, $phoneNumber, $email);
 
         return $this->person;
     }
@@ -60,23 +60,23 @@ class AddressBook
     //Function to edit contact with first name
     function editContact()
     {
-        $this->firstName = readline("Edit your first name : ");
-        $this->lastName = readline("Edit your last name : ");
-        $this->address = readline("Edit your address : ");
-        $this->city = readline("Edit your city : ");
-        $this->state = readline("Edit your state : ");
-        $this->zip = readline("Edit your zip code : ");
-        $this->phoneNumber = readline("Edit your phone Number : ");
-        $this->email = readline("Edit your email : ");
+        $firstName = readline("Edit your first name : ");
+        $lastName = readline("Edit your last name : ");
+        $address = readline("Edit your address : ");
+        $city = readline("Edit your city : ");
+        $state = readline("Edit your state : ");
+        $zip = readline("Edit your zip code : ");
+        $phoneNumber = readline("Edit your phone Number : ");
+        $email = readline("Edit your email : ");
 
-        $this->person->setFirstName($this->firstName);
-        $this->person->setLastName($this->lastName);
-        $this->person->setAddress($this->address);
-        $this->person->setCity($this->city);
-        $this->person->setState($this->state);
-        $this->person->setZip($this->zip);
-        $this->person->setPhoneNumber($this->phoneNumber);
-        $this->person->setEmail($this->email);
+        $this->person->setFirstName($firstName);
+        $this->person->setLastName($lastName);
+        $this->person->setAddress($address);
+        $this->person->setCity($city);
+        $this->person->setState($state);
+        $this->person->setZip($zip);
+        $this->person->setPhoneNumber($phoneNumber);
+        $this->person->setEmail($email);
 
         return $this->person;
     }

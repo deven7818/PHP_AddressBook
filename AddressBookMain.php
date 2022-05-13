@@ -17,7 +17,8 @@ class AddressBookMain
                   \n4. Delete AddressBook
                   \n5. Delete Contact from AddressBook 
                   \n6. Search Contact by City Name 
-                  \n7. Show Contacts from AddressBook
+                  \n7. Sort Contact by First Name 
+                  \n8. Show Contacts from AddressBook
                   \n0. Exit\n";
 
             $choice = readline('Enter Your Choice : ');
@@ -45,6 +46,10 @@ class AddressBookMain
                     $multipleAddressBook->searchPersonByCity();
                     break;
 
+                case 7:
+                    $multipleAddressBook->sortPersonByName();
+                    break;
+    
                 case 7:
                     $multipleAddressBook->showContactFromAddressBook();
                     break;
