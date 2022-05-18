@@ -50,7 +50,7 @@ class AddressBookMain
                     $multipleAddressBook->sortPersonByName();
                     break;
     
-                case 7:
+                case 8:
                     $multipleAddressBook->showContactFromAddressBook();
                     break;
     

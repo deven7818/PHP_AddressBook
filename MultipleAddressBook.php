@@ -44,7 +44,9 @@ class MultipleAddressBook
      */
     public function addNewContact()
     {
+        echo "\n";
         $addressBookName = readline("Enter name of the Address Book to add new contact : ");
+        echo "\n";
         $number = readline("Enter Number of contacts to add : ");
         if (array_key_exists($addressBookName, $this->addressBookArray)) {
             for ($i = 0; $i < $number; $i++) {
@@ -53,7 +55,7 @@ class MultipleAddressBook
                     if ($key == $addressBookName) {
                         if ($values == null) {
                             $this->addressBookArray[$addressBookName][$i] = $this->addressBook->addNewContactDetails($firstName);
-                            echo "Contact added successfully.";
+                            echo "Contact added successfully.\n";
                             break;
                         }
                         for ($j = 0; $j < $number; $j++) {
@@ -71,7 +73,7 @@ class MultipleAddressBook
                 }
             }
         } else {
-            echo $addressBookName . "Address book not found";
+            echo $addressBookName . "Address book not found.\n";
         }
     }
 
@@ -80,6 +82,7 @@ class MultipleAddressBook
      */
     function editContactFromAddressBook()
     {
+        echo "\n";
         $addressBookName = readline("Enter Name of the Address Book to edit Contact : ");
         $editName = readline("Enter First Name of person to edit : ");
         if (array_key_exists($addressBookName, $this->addressBookArray)) {
@@ -102,6 +105,7 @@ class MultipleAddressBook
      */
     function deleteAddressBook()
     {
+        echo "\n";
         $addressBookName = readline("Enter Name of Address Book to delete : ");
         if (array_key_exists($addressBookName, $this->addressBookArray)) {
             unset($this->addressBookArray[$addressBookName]);
@@ -116,6 +120,7 @@ class MultipleAddressBook
      */
     function deleteContactFromAddressBook()
     {
+        echo "\n";
         $addressBookName = readline("Enter the address book name from which want to contact delete : ");
         $deleteContact = readline("Enter Name of the Contact to delete : ");
         if (array_key_exists($addressBookName, $this->addressBookArray)) {
@@ -135,30 +140,40 @@ class MultipleAddressBook
         }
     }
 
-    /**
-     * Function to search a person by their city
+  
+
+     /**
+     * Function to search a person by their State
      */
-    public function searchPersonByCity()
+    public function searchPersonByState()
     {
-        $cityName = readline('Enter the City Name : ');
+        echo "\n";
+        $stateName = readline('Enter the State Name : ');
         foreach ($this->addressBookArray as $key => $values) {
             for ($i = 0; $i < count($values); $i++) {
-                if ($cityName == $values[$i]->getCity()) {
+                if ($stateName == $values[$i]->getState()) {
                     echo "Address Book : " . $key . "\n";
                     echo "First Name : " . $values[$i]->getFirstName() . "\n";
                     echo "Last Name : " . $values[$i]->getLastName() . "\n";
-                    echo "State :" . $values[$i]->getState() . "\n";
+                    echo "Address :" .$values[$i]->getAddress() . "\n";
+                    echo "City :" .$values[$i]->getCity() . "\n";
+                    echo "State :" . $values[$i]->getState() . "\n"; 
+                    echo "Zip code :" .$values[$i]->getZip() . "\n";
+                    echo "Phone Number :" .$values[$i]->getPhoneNumber() . "\n";
+                    echo "Email :" .$values[$i]->getEmail() . "\n";
                     echo "\n";
                 }
             }
         }
     }
 
+    
     /**
      * Function to sort the AddressBook contacts by name
      */
     public function sortPersonByName()
     {
+        echo "\n";
         $addressBookName = readline('Enter the Name of Address Book : ');
         foreach ($this->addressBookArray as $key => $values) {
             if ($key == $addressBookName) {
@@ -178,6 +193,7 @@ class MultipleAddressBook
             }
         }
     }
+
 
 
 

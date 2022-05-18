@@ -30,29 +30,29 @@ class AddressBook
 
         $util = new Util();
 
-        $lastName = readline("Enter your last name : ");
+        $this->lastName = readline("Enter your last name : ");
         $util->validateName($this->lastName);
 
-        $address = readline("Enter your address : ");
+        $this->address = readline("Enter your address : ");
         $util->validateAddress($this->address);
 
-        $city = readline("Enter your city : ");
+        $this->city = readline("Enter your city : ");
         $util->validateLocation($this->city);
 
-        $state = readline("Enter your state : ");
+        $this->state = readline("Enter your state : ");
         $util->validateLocation($this->state);
 
-        $zip = readline("Enter your zip code : ");
+        $this->zip = readline("Enter your zip code : ");
         $util->validateZip($this->zip);
 
         //+91-9075183900
-        $phoneNumber = readline("Enter your phone Number : ");
+        $this->phoneNumber = readline("Enter your phone Number : ");
         $util->validatePhoneNumber($this->phoneNumber);
 
-        $email = readline("Enter your email : ");
+        $this->email = readline("Enter your email : ");
         $util->validateEmail($this->email);
 
-        $this->person = new ContactInfo($firstName, $lastName, $address, $city, $state, $zip, $phoneNumber, $email);
+        $this->person = new ContactInfo($firstName, $this->lastName, $this->address, $this->city, $this->state, $this->zip, $this->phoneNumber, $this->email);
 
         return $this->person;
     }
@@ -69,14 +69,14 @@ class AddressBook
         $phoneNumber = readline("Edit your phone Number : ");
         $email = readline("Edit your email : ");
 
-        $this->person->setFirstName($firstName);
-        $this->person->setLastName($lastName);
-        $this->person->setAddress($address);
-        $this->person->setCity($city);
-        $this->person->setState($state);
-        $this->person->setZip($zip);
-        $this->person->setPhoneNumber($phoneNumber);
-        $this->person->setEmail($email);
+        $this->person->setFirstName($this->firstName);
+        $this->person->setLastName($this->lastName);
+        $this->person->setAddress($this->address);
+        $this->person->setCity($this->city);
+        $this->person->setState($this->state);
+        $this->person->setZip($this->zip);
+        $this->person->setPhoneNumber($this->phoneNumber);
+        $this->person->setEmail($this->email);
 
         return $this->person;
     }

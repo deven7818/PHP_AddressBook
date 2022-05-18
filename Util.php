@@ -19,7 +19,7 @@ class Util
     //function to validate Address
     function validateAddress($address)
     {
-        if (preg_match("/^[A-Za-z0-9'\.\-\s\,]$/", $address)) {
+        if (preg_match("/^[A-Za-z0-9]{1,15}[\.\-\s\,]{1,}[A-Za-z0-9]{1,15}$/", $address)) {
             echo "Valid Address\n";
         } else {
             echo "Invalid... Please inter valid Address\n";
